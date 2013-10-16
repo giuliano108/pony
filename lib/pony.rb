@@ -173,6 +173,7 @@ module Pony
 
   def self.build_mail(options)
     mail = Mail.new do
+      content_type 'multipart/related; type="text/html"' if options[:html_body] && !options[:body]
       to options[:to]
       from options[:from] || 'pony@unknown'
       cc options[:cc]
